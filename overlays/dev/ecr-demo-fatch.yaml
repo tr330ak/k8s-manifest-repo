@@ -1,0 +1,16 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecr-demo 
+  namespace: default
+  labels:
+    env: dev
+spec:
+  selector:
+    matchLabels:
+      app: ecr-demo
+  template:
+    metadata:
+      labels:
+        app: ecr-demo
