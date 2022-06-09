@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: ecr-demo 
+  name: ecr-demo
   namespace: default
 spec:
   replicas: 1
@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: ecr-demo
-          image: 884634136969.dkr.ecr.us-east-1.amazonaws.com/openpament:ccb098cf4c9243837249126bdf9ac04d9d5f9235
+          image: 884634136969.dkr.ecr.us-east-1.amazonaws.com/openpament:c3ae61db0fc722ac486baf3881d5cf87a5446d85
           imagePullPolicy: Always
           ports:
             - containerPort: 80

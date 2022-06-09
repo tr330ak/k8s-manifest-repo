@@ -2,12 +2,18 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-    name: "backend-ingress"
+    name: "demo-ingress"
     namespace: default
     annotations:
       kubernetes.io/ingress.class: alb
+      #external-dns.alpha.kubernetes.io/hostname: demo.strafficopdemo.link
       alb.ingress.kubernetes.io/scheme: internet-facing
       alb.ingress.kubernetes.io/target-type: ip
+      alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS":443}]'
+      alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:884634136969:certificate/e06aeff6-958e-401d-b78d-de43722a9820
+      alb.ingress.kubernetes.io/ssl-policy: ELBSecurityPolicy-2016-08
+      alb.ingress.kubernetes.io/ssl-redirect: "443"
+      #      alb.ingress.kubernetes.io/actions.redirect-www: '{"Type": "redirect", "RedirectConfig": { "Host": "www.strafficopdemo.link", "Protocol": "HTTPS", "Port": "443", "StatusCode": "HTTP_301"}}'
 spec:
     rules:
     - http:
@@ -17,6 +23,13 @@ spec:
             backend:
               service:
                 name: "ecr-demo"
+                port:
+                  number: 80
+          - path: /argocd
+            pathType: Prefix
+            backend:
+              service:
+                name: "argocd-server"
                 port:
                   number: 80
 

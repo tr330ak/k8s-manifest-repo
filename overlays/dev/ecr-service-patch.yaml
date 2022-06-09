@@ -4,8 +4,8 @@ kind: Service
 metadata:
   name: ecr-demo
   annotations:
-    alb.ingress.kubernetes.io/healthcheck-path: "/"
-  label:
+    alb.ingress.kubernetes.io/healthcheck-path: /healthy
+  labels:
     env: dev
 spec:
   selector:
