@@ -3,7 +3,7 @@ kind: Kustomization
 images:
 - name: 884634136969.dkr.ecr.us-east-1.amazonaws.com/openpament
   newName: 884634136969.dkr.ecr.us-east-1.amazonaws.com/openpament
-  newTag: abcdefg
+  newTag: 3c2b2ed1621efaced9eaf1fec6067257935de60b
 resources:
 - ../../base
 patchesStrategicMerge:
